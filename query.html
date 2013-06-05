@@ -1,0 +1,32 @@
+<html>
+<head>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	$.getPHP('http://www.wikidata.org/w/api.php?query', function(data) {
+		var data = data.results;
+		var html = "<ul>";	
+		for(var i=0; i<data.length; i++) {
+	    	html += "<li><a href='http://twitter.com/" + data[i].from_user + "'>@" 
+                      + data[i].from_user + "</a>: " + data[i].text + "</li>";
+		}
+		html += "</ul>"
+    	$('.content').html(html);
+	});
+});
+</script>
+ 
+</head>
+<body>
+<h2>Twitter</h2>
+<div class="content">
+</div>
+<FORM NAME="myform" ACTION="" METHOD="GET">
+Enter something in the box: <BR>
+<INPUT TYPE="text" NAME="inputbox" VALUE=""><P>
+<INPUT TYPE="button" NAME="button" Value="Click" onClick="testResults(this.form)">
+</FORM>
+
+</body>
+</html>
